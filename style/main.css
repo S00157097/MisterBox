@@ -1,0 +1,330 @@
+/*/// Everything ///*/
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style-type: none;
+    box-sizing: border-box;
+}
+*::selection {
+    background-color: #fd9;
+    color: white;
+}
+
+
+/*/// Container ///*/
+html, body {
+    font-size: 100%;
+    font-family: Karla;
+    color: #333;
+    background-color: #dedede;
+    width: 100%;
+    height: 100%;
+}
+#container {
+    width: 980px;
+    min-height: 50vh;
+    background-color: white;
+    margin: 80px auto 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+
+
+/*/// Logo Inside The Nav ///*/
+#logo {
+    font-size: 3em;
+    font-family: "Russo One";
+    flex-grow: 2;
+    text-align: center;
+}
+#logo span {
+    color: darkorange;
+}
+#logo a {
+    color: whitesmoke;
+}
+/*/// Nav With Buttons ///*/
+li.active {
+    background-color: #444;
+}
+nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #333;
+    height: 65px;
+    overflow: hidden;
+}
+nav > ul {
+    display: flex;
+    flex-grow: .3;
+}
+nav > ul a {
+    color: whitesmoke;
+    margin: 0 20px;
+    padding: 0 5px;
+    transition: color .25s linear;
+    font-weight: bold;
+    display: block;
+}
+nav > ul li {
+    height: 65px;
+    line-height: 65px;
+    transition: background-color .175s ease;
+}
+nav > ul li:hover {
+    border-bottom: 5px solid darkorange;
+    background-color: #222;
+    box-shadow: 0 0 7px black;
+}
+/*/// Register / Login ///*/
+#lr {
+    color: whitesmoke;
+    flex-grow: .5;
+}
+#lr > span {
+    background-color: #222;
+    padding: 5px 10px;
+    margin-right: 5px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+#lr > span:hover {
+    background-color: #111;
+}
+
+
+/*/// Header On The Right ///*/
+header {
+    background-color: #555;
+    width: 100%;
+    height: 380px;
+}
+#slide-content {
+    width: 30%;
+    float: right;
+    background-color: #f2eaae;
+    height: 100%;
+    border-left: 3px solid #fff;
+}
+#slide-content h2 {
+    font-weight: bolder;
+    font-size: 2em;
+    margin: 25px 0 50px 35px;
+    padding: 0 0 0 35px;
+    color: white;
+    background-color: #222;
+}
+#slide-content p {
+    text-align: left;
+    margin: 0 15px;
+    padding: 25px;
+}
+
+
+/*/// Slide Show ///*/
+#show {
+    position: absolute;
+    width: 600px;
+    height: 400px;
+    margin: 70px auto;
+}
+#wrap {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    perspective: 800px;
+}
+.box {
+    width: 300px;
+    height: 200px;
+    position: absolute;
+    transition: all .25s ease-in-out;
+    rightleft: 0;
+    border: 2px solid gray;
+    outline: 5px solid white;
+    box-shadow: 0 0 35px 1px black;
+    overflow: hidden;
+    background-color: gray;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    -webkit-filter: grayscale(1);
+}
+#ctrl span:nth-child(1) {
+    left: -70px;
+    top: 37.5%;
+}
+#ctrl span:nth-child(2) {
+    right: -70px;
+    top: 37.5%;
+}
+#ctrl span {
+    background-color: black;
+    opacity: .6;
+    color: white;
+    width: 30px;
+    height: 25%;
+    display: block;
+    text-align: center;
+    line-height: 48px;
+    position: absolute;
+    font-size: 2em;
+    transition: all .25s linear;
+    border-radius: 5px;
+}
+#ctrl span:hover {
+    cursor: pointer;
+}
+#ctrl span::selection {
+    background-color: transparent;
+    color: white;
+}
+
+
+/*/// That's Where The Content Goes ///*/
+main {
+    background-color: whitesmoke;
+    width: 100%;
+    min-height: inherit;
+    box-shadow: 0 0 25px #222;
+    display: flex;
+}
+aside {
+    width: 25%;
+    background-color: #444;
+    box-shadow: 0 0 15px;
+}
+#as-list {
+    padding: 5px;
+}
+#as-list li {
+    padding: 10px 20px;
+    position: relative;
+}
+#as-list li:hover {
+    background-color: #555;
+    box-shadow: 0 0 15px;
+}
+#as-list a {
+    color: whitesmoke;
+    display: block;
+    font-size: 1.1em;
+}
+aside ul li, nav ul li {
+    cursor: pointer;
+}
+.drop-trigger span {
+    color: whitesmoke;
+    font-size: 1.1em;
+}
+.drop-trigger:after {
+    content: "^";
+    transform: rotateZ(180deg);
+    color: whitesmoke;
+    font-weight: bolder;
+    position: absolute;
+    top: 25%;
+    right: 10%;
+}
+.drop-list {
+    display: none;
+    margin-left: 5px;
+}
+.drop-list li {
+    background-color: #333;
+}
+.drop-list li:hover {
+    background-color: #222;
+}
+.drop-list a {
+    padding-left: 10px;
+}
+
+
+#items {
+    width: 75%;
+    padding: 20px;
+    position: relative;
+}
+.item {
+    width: 200px;
+    height: 200px;
+    background-color: silver;
+    outline: 3px solid white;
+    border: 2px solid darkgray;
+    position: relative;
+    float: left;
+    margin: 14px 14px 100px 14px;
+    
+    background-size: cover;
+    background-position: center;
+}
+.item span:nth-child(1) {
+    background-color: #222;
+    position: absolute;
+    top: 5px;
+    left: 0;
+    width: 50px;
+    height: 25px;
+    line-height: 25px;
+    text-align: center;
+    color: whitesmoke;
+    font-weight: bolder;
+    font-style: italic;
+    opacity: .8;
+    border-radius: 0 50px 50px 0;
+}
+.item span:nth-child(2) {
+    position: absolute;
+    bottom: -15px;
+    right: -15px;
+    background-color: white;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    display: block;
+    border-radius: 50%;
+    border: 2px solid darkgray;
+    font-family: Karla;
+    font-style: italic;
+    font-weight: bold;
+}
+.item span:nth-child(3) {
+    position: absolute;
+    bottom: -50px;
+    right: 0;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    width: 196px;
+    background-color: white;
+    color: silver;
+    border-radius: 5px;
+    border: 1px solid silver;
+}
+
+
+
+/*/// Footer?? ///*/
+footer {
+    background-color: #333;
+    min-height: 65px;
+    width: 980px;
+    position: relative;
+    margin: 0 auto 80px auto;
+    color: #999;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-weight: bold;
+    font-style: italic;
+}
+footer span {
+    color: linen;
+    display: inline-block;
+    width: 80px;
+    font-style: normal;
+}

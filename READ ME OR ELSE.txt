@@ -1,0 +1,20 @@
+
+
+* Assets folder contains HTML files which I include into other files. - They're just assets.
+
+
+* Media folder contains 6 images for the slide show. And it also contains "boxes" folder
+  where the box images are stored.
+
+
+* Script holds 2 JS documents.
+	- script.js - Contains Slideshow
+	- script.js - Contains everything else | Drop-down list, Element Creation
+
+
+* Style folder is for stylesheets.
+
+
+* PHP documents: about, catalogue, contact, index, products.
+  db.php is the connection to the database. I don't keep it in the assets. because it should be outside the server.
+  But it's only XAMPP so it's ok.
