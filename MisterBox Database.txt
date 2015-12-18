@@ -153,6 +153,34 @@ INSERT INTO ButterflyTbl (ButterflyID, Width, Price) VALUES
 ('400', '12', '1.18');
 
 
-************************************************************************************
+******************************//    16:16   //*******************************
 
+CREATE TABLE RibbonTypeTbl (
+	Width SMALLINT(6) NOT NULL,
+	ProductID INT NOT NULL,
+	PRIMARY KEY (Width),
+	FOREIGN KEY (ProductID) REFERENCES ProductTbl(ProductID)
+);
 
+CREATE TABLE RibbonTbl (
+	RibbonID CHAR(6) NOT NULL,
+	Width SMALLINT(6) NOT NULL,
+	Price DECIMAL(10,2),
+	PRIMARY KEY (RibbonID),
+	FOREIGN KEY (Width) REFERENCES RibbonTypeTbl(Width)
+);
+
+INSERT INTO RibbonTypeTbl (ProductID, Width)
+VALUES ('2', '3'), ('2', '5'), ('2', '8'), ('2', '10');
+
+INSERT INTO RibbonTbl (RibbonID, Width, Price) VALUES
+('30018B', '5', '8.58'),
+('30018C', '5', '8.58'),
+('30018R', '5', '8.58'),
+('30018W', '5', '8.58'),
+('12128', '5', '8.58'),
+('30056', '8', '10.18'),
+('30077', '10', '12.46'),
+('30110C', '3', '6.70'),
+('30110O', '3', '6.70'),
+('30110W', '3', '6.70');
