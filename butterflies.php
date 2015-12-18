@@ -52,7 +52,7 @@
         <?PHP include "assets/footer.html"; ?>
         
         <?PHP
-            echo '<script> CreateButterflies('.$count.', '.json_encode($buttId).', '.json_encode($price).', "'.$_GET['butterfly'].'"); </script>';
+            echo '<script> CreateItems('.$count.', '.json_encode($buttId).', '.json_encode($price).', "'.$_GET['butterfly'].'", "butterflies"); </script>';
         ?>
     </body>
 </html>

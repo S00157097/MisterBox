@@ -52,7 +52,7 @@
         <?PHP include "assets/footer.html"; ?>
         
         <?PHP
-            echo '<script> CreateRibbons('.$count.', '.json_encode($ribId).', '.json_encode($price).', "'.$_GET['ribb'].'"); </script>';
+            echo '<script> CreateItems('.$count.', '.json_encode($ribId).', '.json_encode($price).', "'.$_GET['ribb'].'", "ribbons"); </script>';
         ?>
     </body>
 </html>

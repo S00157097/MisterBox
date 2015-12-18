@@ -58,6 +58,7 @@
         <?PHP include "assets/footer.html"; ?>
         
         <?PHP
+        
             echo '<script> CreateBoxes('.$count.', '.json_encode($size).', '.json_encode($price).', "'.$_GET['box'].'", '.json_encode($length).', '.json_encode($width).', '.json_encode($height).'); </script>';
         ?>
     </body>

@@ -55,30 +55,10 @@ function CreateBows(c, id, w, p) {
     }
 }
 
-function CreateButterflies(c, id, p, s) {
+function CreateItems(c, id, p, s, dir) {
     for(var i = 0; i < c; i++) {
         item = document.createElement("div");
-        item.style.backgroundImage = 'url(media/butterflies/'+s+'/'+ id[i] +'.jpg)';
-        item.classList.add("item");
-        
-        span = document.createElement("span");
-        span.appendChild(document.createTextNode(""+ p[i] +""));
-        span.classList.add('price');
-        
-        span3 = document.createElement("span");
-        span3.appendChild(document.createTextNode("Width "+(s)+"cm"));
-        span3.classList.add('width');
-        
-        item.appendChild(span);
-        item.appendChild(span3);
-        items.appendChild(item);
-    }
-}
-
-function CreateRibbons(c, id, p, s) {
-    for(var i = 0; i < c; i++) {
-        item = document.createElement("div");
-        item.style.backgroundImage = 'url(media/ribbons/'+s+'/'+ id[i] +'.jpg)';
+        item.style.backgroundImage = 'url(media/'+dir+'/'+s+'/'+ id[i] +'.jpg)';
         item.classList.add("item");
         
         span = document.createElement("span");
