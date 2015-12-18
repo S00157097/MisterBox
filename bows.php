@@ -1,27 +1,23 @@
 <?PHP
     require_once('db.php');
-
-    $size = array();
-    $price = array();
-    $length = array();
+    
+    $bowId = array();
     $width = array();
-    $height = array();
+    $price = array();
 
-    $sql = "SELECT COUNT(*) AS total FROM BoxTbl WHERE BoxType = '". $_GET['box'] ."';";
+    $sql = "SELECT COUNT(*) AS Total FROM BowTbl;";
     $result = mysqli_fetch_assoc(mysqli_query($dbc, $sql));
 
-    $count = $result['total'];
+    $count = $result['Total'];
 
-    $sql2 = "SELECT BoxSize, BoxLength, BoxWidth, BoxHeight, Price FROM BoxTbl WHERE BoxType = '". $_GET['box'] ."' ORDER BY Price ASC;";
+    $sql2 = "SELECT BowID, Width, Price FROM BowTbl;";
     $result2 = mysqli_query($dbc, $sql2);
 
     $i = 0;
     while($row = mysqli_fetch_assoc($result2)) {
-        $size[$i] = $row['BoxSize'];
+        $bowId[$i] = $row['BowID'];
+        $width[$i] = $row['Width'];
         $price[$i] = $row['Price'];
-        $length[$i] = $row['BoxLength'];
-        $width[$i] = $row['BoxWidth'];
-        $height[$i] = $row['BoxHeight'];
         $i++;
     }
 ?>
@@ -29,7 +25,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
     <head>
-        <title>MrBox | <?PHP echo $_GET['box']; ?></title>
+        <title>MrBox | Bows</title>
 
         <meta name="author" content="Maris Orols" />
         <meta name="description" content="Variety of products ve are selling." />
@@ -58,7 +54,7 @@
         <?PHP include "assets/footer.html"; ?>
         
         <?PHP
-            echo '<script> CreateBoxes('.$count.', '.json_encode($size).', '.json_encode($price).', "'.$_GET['box'].'", '.json_encode($length).', '.json_encode($width).', '.json_encode($height).'); </script>';
+            echo '<script> CreateBows('.$count.', '.json_encode($bowId).', '.json_encode($width).', '.json_encode($price).'); </script>';
         ?>
     </body>
 </html>
