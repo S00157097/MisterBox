@@ -1,23 +1,10 @@
 <?PHP
     require_once('db.php');
 
-    $ribId = array();
-    $price = array();
-
-    $sql = "SELECT COUNT(*) AS total FROM RibbonTbl WHERE Width = '". $_GET['ribb'] ."';";
-    $result = mysqli_fetch_assoc(mysqli_query($dbc, $sql));
-
-    $count = $result['total'];
-
-    $sql2 = "SELECT RibbonID, Price FROM RibbonTbl WHERE Width = '". $_GET['ribb'] ."' ORDER BY Price ASC;";
-    $result2 = mysqli_query($dbc, $sql2);
-
-    $i = 0;
-    while($row = mysqli_fetch_assoc($result2)) {
-        $ribId[$i] = $row['RibbonID'];
-        $price[$i] = $row['Price'];
-        $i++;
-    }
+    $sql = "SELECT RibbonID, Price FROM RibbonTbl WHERE Width = '". $_GET['ribb'] ."' ORDER BY Price ASC;";
+    $result = mysqli_query($dbc, $sql);
+    
+    mysqli_close($dbc);
 ?>
 
 <!DOCTYPE html>
@@ -42,7 +29,16 @@
             <main>
                 <?PHP include "assets/aside.html"; ?>
 
-                <div id="items"></div>
+                <div id="items">
+                    <?PHP
+                        while($row = mysqli_fetch_array($result)) {
+                            echo '<div class="item" style="background-image: url(media/ribbons/'. $_GET['ribb'] .'/'. $row[0] .'.jpg);">';
+                            echo '<span class="price">'. $row[1] .'</span>';
+                            echo '<span class="width">Width: '.  $_GET['ribb'] .'cm</span>';
+                            echo '</div>';
+                        }
+                    ?>
+                </div>
             </main>
         </div>
         
@@ -50,9 +46,5 @@
         <script type="text/javascript" src="script/script2.js"></script>
         
         <?PHP include "assets/footer.html"; ?>
-        
-        <?PHP
-            echo '<script> CreateItems('.$count.', '.json_encode($ribId).', '.json_encode($price).', "'.$_GET['ribb'].'", "ribbons"); </script>';
-        ?>
     </body>
 </html>

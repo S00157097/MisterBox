@@ -13,16 +13,16 @@ CREATE DATABASE MisterBox;
 USE MisterBox;
 
 CREATE TABLE ProductTbl (
-	ProductID INT NOT NULL AUTO_INCREMENT,
-	ProductName VARCHAR(20),
+	ProductID INT UNSIGNED NOT NULL AUTO_INCREMENT,
+	ProductName VARCHAR(20) NULL,
 	PRIMARY KEY (ProductID)
 );
 
 ************************************************************************************
 
 CREATE TABLE BoxTypeTbl (
-	BoxType CHAR(3) NOT NULL,
-	ProductID INT NOT NULL,
+	BoxType VARCHAR(3) NOT NULL,
+	ProductID INT UNSIGNED NOT NULL,
 	PRIMARY KEY (BoxType),
 	FOREIGN KEY (ProductID) REFERENCES ProductTbl(ProductID)
 );
@@ -30,12 +30,12 @@ CREATE TABLE BoxTypeTbl (
 ************************************************************************************
 
 CREATE TABLE BoxTbl (
-	BoxSize CHAR(5) NOT NULL,
-	BoxType CHAR(3) NOT NULL,
-	BoxLength SMALLINT(6),
-	BoxWidth SMALLINT(6),
-	BoxHeight SMALLINT(6),
-	Price DECIMAL(10,2),
+	BoxSize VARCHAR(5) NOT NULL,
+	BoxType VARCHAR(3) NOT NULL,
+	BoxLength SMALLINT(6) NULL,
+	BoxWidth SMALLINT(6) NULL,
+	BoxHeight SMALLINT(6) NULL,
+	Price DECIMAL(10,2) NULL,
 	PRIMARY KEY (BoxSize),
 	FOREIGN KEY (BoxType) REFERENCES BoxTypeTbl(BoxType)
 );
@@ -91,10 +91,10 @@ INSERT INTO BoxTbl (BoxSize, BoxType, BoxLength, BoxWidth, BoxHeight, Price) VAL
 
 
 CREATE TABLE BowTbl (
-	BowID CHAR(5) NOT NULL,
-	ProductID INT NOT NULL,
-	Width SMALLINT(6),
-	Price DECIMAL(10,2),
+	BowID CHAR(4) NOT NULL,
+	ProductID INT UNSIGNED NOT NULL,
+	Width SMALLINT(6) NULL,
+	Price DECIMAL(10,2) NULL,
 	PRIMARY KEY (BowID),
 	FOREIGN KEY (ProductID) REFERENCES ProductTbl(ProductID)
 );
@@ -119,7 +119,7 @@ INSERT INTO BowTbl (BowID, ProductID, Width, Price) VALUES
 
 CREATE TABLE ButterflyTypeTbl (
 	Width SMALLINT(6) NOT NULL,
-	ProductID INT NOT NULL,
+	ProductID INT UNSIGNED NOT NULL,
 	PRIMARY KEY (Width),
 	FOREIGN KEY (ProductID) REFERENCES ProductTbl(ProductID)
 );
@@ -127,7 +127,7 @@ CREATE TABLE ButterflyTypeTbl (
 CREATE TABLE ButterflyTbl (
 	ButterflyID CHAR(3) NOT NULL,
 	Width SMALLINT(6) NOT NULL,
-	Price DECIMAL(10, 2),
+	Price DECIMAL(10, 2) NULL,
 	PRIMARY KEY (ButterflyID),
 	FOREIGN KEY (Width) REFERENCES ButterflyTypeTbl(Width)
 );
@@ -157,15 +157,15 @@ INSERT INTO ButterflyTbl (ButterflyID, Width, Price) VALUES
 
 CREATE TABLE RibbonTypeTbl (
 	Width SMALLINT(6) NOT NULL,
-	ProductID INT NOT NULL,
+	ProductID INT UNSIGNED NOT NULL,
 	PRIMARY KEY (Width),
 	FOREIGN KEY (ProductID) REFERENCES ProductTbl(ProductID)
 );
 
 CREATE TABLE RibbonTbl (
-	RibbonID CHAR(6) NOT NULL,
+	RibbonID VARCHAR(6) NOT NULL,
 	Width SMALLINT(6) NOT NULL,
-	Price DECIMAL(10,2),
+	Price DECIMAL(10,2) NULL,
 	PRIMARY KEY (RibbonID),
 	FOREIGN KEY (Width) REFERENCES RibbonTypeTbl(Width)
 );

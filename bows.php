@@ -1,25 +1,10 @@
 <?PHP
     require_once('db.php');
-    
-    $bowId = array();
-    $width = array();
-    $price = array();
 
-    $sql = "SELECT COUNT(*) AS Total FROM BowTbl;";
-    $result = mysqli_fetch_assoc(mysqli_query($dbc, $sql));
+    $sql = "SELECT BowID, Width, Price FROM BowTbl;";
+    $result = mysqli_query($dbc, $sql);
 
-    $count = $result['Total'];
-
-    $sql2 = "SELECT BowID, Width, Price FROM BowTbl;";
-    $result2 = mysqli_query($dbc, $sql2);
-
-    $i = 0;
-    while($row = mysqli_fetch_assoc($result2)) {
-        $bowId[$i] = $row['BowID'];
-        $width[$i] = $row['Width'];
-        $price[$i] = $row['Price'];
-        $i++;
-    }
+    mysqli_close($dbc);
 ?>
 
 <!DOCTYPE html>
@@ -39,12 +24,20 @@
     <body>
         <?PHP include "assets/nav.html"; ?>
         
-        
         <div id="container">
             <main>
                 <?PHP include "assets/aside.html"; ?>
 
-                <div id="items"></div>
+                <div id="items">
+                    <?PHP
+                        while($row = mysqli_fetch_array($result)) {
+                            echo '<div class="item" style="background-image: url(media/bows/'. $row[0] .'.jpg);">';
+                            echo '<span class="price">'. $row[2] .'</span>';
+                            echo '<span class="width">'. $row[1] .'mm</span>';
+                            echo '</div>';
+                        }
+                    ?>
+                </div>
             </main>
         </div>
         
@@ -52,9 +45,5 @@
         <script type="text/javascript" src="script/script2.js"></script>
         
         <?PHP include "assets/footer.html"; ?>
-        
-        <?PHP
-            echo '<script> CreateBows('.$count.', '.json_encode($bowId).', '.json_encode($width).', '.json_encode($price).'); </script>';
-        ?>
     </body>
 </html>

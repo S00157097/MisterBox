@@ -23,14 +23,13 @@
                 </div>
 
                 <div id="slide-content">
-                    <h2>Heading</h2>
+                    <h2>Welcome</h2>
                     
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium illum doloribus corporis 
-                        asperiores nobis maxime voluptatem quidem vitae perspiciatis obcaecati laudantium quam quia deleniti.
-                        
-                        <span id="spBtn">Special Orders</span>
+                        //I don't know what to write here, please help me...
                     </p>
+                    
+                    <span id="spBtn">Special Orders</span>
                 </div>
             </header>
 

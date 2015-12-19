@@ -1,29 +1,10 @@
 <?PHP
     require_once('db.php');
 
-    $size = array();
-    $price = array();
-    $length = array();
-    $width = array();
-    $height = array();
+    $sql = "SELECT BoxSize, BoxLength, BoxWidth, BoxHeight, Price FROM BoxTbl WHERE BoxType = '". $_GET['box'] ."' ORDER BY Price ASC;";
+    $result = mysqli_query($dbc, $sql);
 
-    $sql = "SELECT COUNT(*) AS total FROM BoxTbl WHERE BoxType = '". $_GET['box'] ."';";
-    $result = mysqli_fetch_assoc(mysqli_query($dbc, $sql));
-
-    $count = $result['total'];
-
-    $sql2 = "SELECT BoxSize, BoxLength, BoxWidth, BoxHeight, Price FROM BoxTbl WHERE BoxType = '". $_GET['box'] ."' ORDER BY Price ASC;";
-    $result2 = mysqli_query($dbc, $sql2);
-
-    $i = 0;
-    while($row = mysqli_fetch_assoc($result2)) {
-        $size[$i] = $row['BoxSize'];
-        $price[$i] = $row['Price'];
-        $length[$i] = $row['BoxLength'];
-        $width[$i] = $row['BoxWidth'];
-        $height[$i] = $row['BoxHeight'];
-        $i++;
-    }
+    mysqli_close($dbc);
 ?>
 
 <!DOCTYPE html>
@@ -48,7 +29,16 @@
             <main>
                 <?PHP include "assets/aside.html"; ?>
 
-                <div id="items"></div>
+                <div id="items">
+                    <?PHP
+                        while($row = mysqli_fetch_array($result)) {
+                            echo '<div class="item" style="background-image: url(media/boxes/'. $_GET['box'] .'/'. $_GET['box'] .'1.jpg);">';
+                            echo '<span class="price">'. $row[4] .'</span>';
+                            echo '<span class="width">'.  $row[1] .' x '. $row[2] .' x '. $row[3] .'</span>';
+                            echo '</div>';
+                        }
+                    ?>
+                </div>
             </main>
         </div>
         
@@ -56,10 +46,5 @@
         <script type="text/javascript" src="script/script2.js"></script>
         
         <?PHP include "assets/footer.html"; ?>
-        
-        <?PHP
-        
-            echo '<script> CreateBoxes('.$count.', '.json_encode($size).', '.json_encode($price).', "'.$_GET['box'].'", '.json_encode($length).', '.json_encode($width).', '.json_encode($height).'); </script>';
-        ?>
     </body>
 </html>
