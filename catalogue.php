@@ -33,6 +33,7 @@
                     <?PHP
                         while($row = mysqli_fetch_array($result)) {
                             echo '<div class="item" style="background-image: url(media/boxes/'. $_GET['box'] .'/'. $_GET['box'] .'1.jpg);">';
+                            echo '<span class="type">'. $row[0] .'</span>';
                             echo '<span class="price">'. $row[4] .'</span>';
                             echo '<span class="width">'.  $row[1] .' x '. $row[2] .' x '. $row[3] .'</span>';
                             echo '</div>';
