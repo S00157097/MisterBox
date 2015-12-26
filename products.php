@@ -60,6 +60,8 @@
         $i++;
     }
 
+    $usedItems = array();
+
 ?>
 
 
@@ -81,46 +83,69 @@
         <?PHP include "assets/nav.html"; ?>
         
         <div id="container">
+           
             <main>
                 <?PHP include "assets/aside.html"; ?>
                 
                 <div id="items">
-                    <?PHP               
-                        for($i = 0; $i < 15; $i++) {
+                    <?PHP
+                        $length = 15;    
+                    
+                        for($i = 0; $i < $length; $i++) {
                             $rand = rand(0, 3);
                             
                             switch($rand) {
                                 case 0:
                                     $x = rand(0, sizeof($boxSize) - 1);
-                                    echo '<div class="item" style="background-image: url(media/boxes/'. $boxType[$x] .'/'. $boxType[$x] .'1.jpg);">';
+                                    if(in_array($boxSize[$x], $usedItems)) {
+                                        $length++;
+                                        break;
+                                    }
+                                    array_push($usedItems, $boxSize[$x]);
+                                    
+                                    echo '<a href="preview.php?prod=Box&id='. $boxSize[$x] .'"><div class="item" style="background-image: url(media/boxes/'. $boxType[$x] .'/'. $boxType[$x] .'1.jpg);">';
                                     echo '<span class="type">'. $boxSize[$x] .'</span>';
                                     echo '<span class="price">'. $boxPrice[$x] .'</span>';
-                                    echo '<span class="width">'.  $boxWidth[$x] .'</span>';
-                                    echo '</div>';
+                                    echo '<span class="width">'.  $boxWidth[$x] .'</span></div></a>';
                                     break;
                                     
                                 case 1:
                                     $x = rand(0, sizeof($ribbonId) - 1);
-                                    echo '<div class="item" style="background-image: url(media/ribbons/'. $ribbonWidth[$x] .'/'. $ribbonId[$x] .'.jpg);">';
+                                    if(in_array($ribbonId[$x], $usedItems)) {
+                                        $length++;
+                                        break;
+                                    }
+                                    array_push($usedItems, $ribbonId[$x]);
+                                    
+                                    echo '<a href="preview.php?prod=Ribbon&id='. $ribbonId[$x] .'"><div class="item" style="background-image: url(media/ribbons/'. $ribbonWidth[$x] .'/'. $ribbonId[$x] .'.jpg);">';
                                     echo '<span class="price">'. $ribbonPrice[$x] .'</span>';
-                                    echo '<span class="width">Width: '.  $ribbonWidth[$x] .'cm</span>';
-                                    echo '</div>';
+                                    echo '<span class="width">Width: '.  $ribbonWidth[$x] .'cm</span></div></a>';
                                     break;
                                     
                                 case 2:
                                     $x = rand(0, sizeof($bowId) - 1);
-                                    echo '<div class="item" style="background-image: url(media/bows/'. $bowId[$x] .'.jpg);">';
+                                    if(in_array($bowId[$x], $usedItems)) {
+                                        $length++;
+                                        break;
+                                    }
+                                    array_push($usedItems, $bowId[$x]);
+                                    
+                                    echo '<a href="preview.php?prod=Bow&id='. $bowId[$x] .'"><div class="item" style="background-image: url(media/bows/'. $bowId[$x] .'.jpg);">';
                                     echo '<span class="price">'. $bowPrice[$x] .'</span>';
-                                    echo '<span class="width">'. $bowWidth[$x] .'mm</span>';
-                                    echo '</div>';
+                                    echo '<span class="width">'. $bowWidth[$x] .'mm</span></div></a>';
                                     break;
                                     
                                 case 3:
                                     $x = rand(0, sizeof($butterId) - 1);
-                                    echo '<div class="item" style="background-image: url(media/butterflies/'. $butterWidth[$x] .'/'. $butterId[$x] .'.jpg);">';
+                                    if(in_array($butterId[$x], $usedItems)) {
+                                        $length++;
+                                        break;
+                                    }
+                                    array_push($usedItems, $butterId[$x]);
+                                    
+                                    echo '<a href="preview.php?prod=Butterfly&id='. $butterId[$x] .'"><div class="item" style="background-image: url(media/butterflies/'. $butterWidth[$x] .'/'. $butterId[$x] .'.jpg);">';
                                     echo '<span class="price">'. $butterPrice[$x] .'</span>';
-                                    echo '<span class="width">Width: '. $butterWidth[$x] .'cm</span>';
-                                    echo '</div>';
+                                    echo '<span class="width">Width: '. $butterWidth[$x] .'cm</span></div></a>';
                                     break;
                             }
                         }

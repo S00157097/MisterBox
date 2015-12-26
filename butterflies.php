@@ -32,10 +32,9 @@
                 <div id="items">
                     <?PHP
                         while($row = mysqli_fetch_array($result)) {
-                            echo '<div class="item" style="background-image: url(media/butterflies/'. $_GET['butterfly'] .'/'. $row[0] .'.jpg);">';
+                            echo '<a href="preview.php?prod=Butterfly&id='. $row[0] .'"><div class="item" style="background-image: url(media/butterflies/'. $_GET['butterfly'] .'/'. $row[0] .'.jpg);">';
                             echo '<span class="price">'. $row[1] .'</span>';
-                            echo '<span class="width">Width: '.  $_GET['butterfly'] .'cm</span>';
-                            echo '</div>';
+                            echo '<span class="width">Width: '.  $_GET['butterfly'] .'cm</span></div></a>';
                         }
                     ?>
                 </div>

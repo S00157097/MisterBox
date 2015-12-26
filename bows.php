@@ -31,10 +31,9 @@
                 <div id="items">
                     <?PHP
                         while($row = mysqli_fetch_array($result)) {
-                            echo '<div class="item" style="background-image: url(media/bows/'. $row[0] .'.jpg);">';
+                            echo '<a href="preview.php?prod=Bow&id='. $row[0] .'"><div class="item" style="background-image: url(media/bows/'. $row[0] .'.jpg);">';
                             echo '<span class="price">'. $row[2] .'</span>';
-                            echo '<span class="width">'. $row[1] .'mm</span>';
-                            echo '</div>';
+                            echo '<span class="width">'. $row[1] .'mm</span></div></a>';
                         }
                     ?>
                 </div>

@@ -184,3 +184,29 @@ INSERT INTO RibbonTbl (RibbonID, Width, Price) VALUES
 ('30110C', '3', '6.70'),
 ('30110O', '3', '6.70'),
 ('30110W', '3', '6.70');
+
+******************************//    25/12/2015  16:48   //*******************************
+
+
+CREATE TABLE PaperTbl (
+	PaperID VARCHAR(6) NOT NULL,
+	ProductID INT UNSIGNED NOT NULL,
+	PRIMARY KEY (PaperID),
+	FOREIGN KEY (ProductID) REFERENCES ProductTbl(ProductID)
+);
+
+INSERT INTO PaperTbl (PaperID, ProductID) VALUES
+('35676', '5'),
+('35677', '5'),
+('451498', '5'),
+('452408', '5'),
+('452528', '5'),
+('452671', '5'),
+('453460', '5'),
+('453465', '5'),
+('453869', '5'),
+('453903', '5'),
+('453939', '5'),
+('453955', '5'),
+('454331', '5'),
+('454332', '5');

@@ -29,6 +29,9 @@ html, body {
     position: relative;
     overflow: hidden;
 }
+#container a {
+    color: #333;
+}
 
 
 /*/// Logo Inside The Nav ///*/
@@ -223,6 +226,10 @@ main {
     min-height: inherit;
     box-shadow: 0 0 25px #222;
     display: flex;
+    flex-wrap: wrap;
+}
+main div {
+    width: 75%;
 }
 aside {
     width: 25%;
@@ -284,7 +291,7 @@ aside ul li, nav ul li {
 .item {
     width: 200px;
     height: 200px;
-    background-color: silver;
+    background-color: white;
     outline: 3px solid white;
     border: 2px solid darkgray;
     position: relative;
@@ -293,6 +300,7 @@ aside ul li, nav ul li {
     
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
 }
 .type {
     background-color: #222;
@@ -360,4 +368,296 @@ footer span {
     display: inline-block;
     width: 80px;
     font-style: normal;
+}
+
+
+
+#view {
+    width: 100%;
+    min-height: 20px;
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+}
+#view-image {
+    width: 280px;
+    height: 280px;
+    background-color: white;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    outline: 3px solid white;
+    border: 2px solid darkgray;
+    box-shadow: 0 0 15px #cdd4ab;
+    position: relative;
+}
+#view-info {
+    width: 300px;
+    position: relative;
+}
+#view h2 {
+    font-size: 2.5em;
+    font-weight: bolder;
+    text-align: right;
+    margin-right: 15px;
+    padding: 2px 5px;
+    border-bottom: 2px solid orange;
+}
+#view ul {
+    margin: 20px;
+}
+#view ul li {
+    font-weight: bold;
+    display: block;
+}
+#view ul span {
+    font-weight: normal;
+    display: inline-block;
+}
+.view-price {
+    font-size: 1.5em;
+    font-weight: bolder;
+    font-style: italic;
+    background-color: #777;
+    padding: 5px 20px;
+    margin: 20px auto;
+    display: inline-block;
+    color: white;
+    border: 2px solid #555;
+    border-radius: 10px;
+    position: absolute;
+    bottom: 0;
+    right: -20px;
+    opacity: .8;
+}
+#dimension {
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    width: 196px;
+    background-color: white;
+    color: silver;
+    border-radius: 5px;
+    border: 1px solid silver;
+    font-weight: bolder;
+    display: block;
+    margin: 20px auto;
+}
+
+
+
+#quantSelect {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background-color: #fdfdfd;
+    box-shadow: 0 0 15px;
+}
+#papers {
+    padding: 30px 0;
+    width: 60%;
+    min-height: 100px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding-left: 20px;
+}
+.paper {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 100px;
+    height: 100px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: silver;
+    display: inline-block;
+    margin: 2px;
+    position: relative;
+    transition: all .25s ease;
+}
+.paper:after {
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    bottom: 0;
+    right: 0;
+    content: "";
+    position: absolute;
+    text-align: center;
+}
+.selected:after{
+    content: "✔";
+    background-color: orange;
+    color: white;
+}
+.paper:hover {
+    transform: scale(2);
+    z-index: 10;
+}
+
+#output {
+    width: 40%;
+}
+#output ul {
+    background-color: white;
+    width: 90%;
+    height: 250px;
+    margin: 30px auto;
+    border: 2px solid #666;
+    border-radius: 3px;
+    overflow-y: scroll;
+}
+#output ul li {
+    background-color: whitesmoke;
+    padding: 5px;
+    margin: 5px;
+    transition: background-color .1s linear;
+    position: relative;
+}
+#output ul li:hover {
+    background-color: #d4cfcf;
+}
+#output ul li .x {
+    display: none;
+    position: absolute;
+    right: 13px;
+    cursor: pointer;
+}
+#output ul li:hover .x {
+    color: darkorange;
+    font-weight: bolder;
+    display: inline-block;
+}
+#ctrl {
+    margin: 0 auto;
+    display: flex;
+}
+#ctrl input {
+    height: 35px;
+    display: inline-block;
+}
+#quant {
+    text-align: center;
+    width: 40%;
+    border: 1px solid silver;
+    border-radius: 5px 0 0 5px;
+}
+#add {
+    width: 60%;
+    background-color: #444;
+    color: whitesmoke;
+    font-weight: bolder;
+    border: 1px solid silver;
+    position: relative;
+    right: 3px;
+    outline: none;
+    transition: background-color .25s linear;
+    cursor: pointer;
+    margin-bottom: 30px;
+}
+#add:hover {
+    color: #444;
+    background-color: whitesmoke;
+}
+
+
+.selected {
+    border-color: orange;
+    box-shadow: 0 0 15px orange;
+    position: relative;
+}
+.newI {
+    width: 20px;
+    height: 20px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: red;
+    display: inline-block;
+    position: absolute;
+    right: 35px;
+}
+#order {
+    width: 35%;
+    background-color: #444;
+    color: whitesmoke;
+    font-weight: bolder;
+    border: 1px solid silver;
+    position: relative;
+    right: 3px;
+    border-radius: 0 5px 5px 0;
+    outline: none;
+    transition: background-color .25s linear;
+    cursor: pointer;
+    margin-bottom: 30px;
+}
+#order:hover {
+    color: #444;
+    background-color: whitesmoke;
+}
+
+#data {
+    position: absolute;
+    width: 55%;
+    top: 50px;
+    height: 500px;
+    left: 200%;
+    background-color: whitesmoke;
+    z-index: 20;
+    border-radius: 5px;
+    box-shadow: 0 0 15px;
+    transition: all .25s ease-in-out;
+    opacity: 0;
+}
+#data dl {
+    margin: 30px;
+}
+#data label {
+    font-weight: bolder;
+    padding-left: 20px;
+}
+#data input {
+    width: 100%;
+    height: 30px;
+    border-radius: 3px;
+    border: 1px solid silver;
+    margin-bottom: 20px;
+    padding-left: 25px;
+}
+#data textarea {
+    display: block;
+    max-width: 100%;
+    width: 100%;
+    max-height: 150px;
+    height: 150px;
+    padding: 5px;
+    font-family: Lato;
+}
+#data .close {
+    color: gray;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: block;
+    width: 10px;
+    height: 10px;
+    font-weight: bold;
+    cursor: pointer;
+}
+#submit {
+    margin-top: 20px;
+    background-color: #444;
+    color: whitesmoke;
+    font-weight: bolder;
+    border: 1px solid silver;
+    border-radius: 5px;
+    outline: none;
+    transition: background-color .25s linear;
+    cursor: pointer;
+}
+#submit:hover {
+    color: #444;
+    background-color: whitesmoke;
 }
